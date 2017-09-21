@@ -1,7 +1,7 @@
 # Javascript уроки
 
 - 01 [Создание объекта через конструктор, геттеры, сеттеры, объявление свойств](https://github.com/inkorcoder/js-grow-up/tree/master/01)
-- 02 Паттерны создания объектов: Фабрика, Конструктор, Прототип, Динаический прототип, Синглтон
+- 02 [Паттерны создания объектов: Фабрика, Конструктор, Прототип, Динаический прототип, Синглтон](https://github.com/inkorcoder/js-grow-up/tree/master/02)
 - 03 Контекст вызова: Call, Apply, Bind. Каррирование
 - 04 AJAX, Сокеты, LocalStorage, Веб-воркеры, Сервис-воркеры, API
 - 06 SVG, Canvas, requestAnimationFrame, WebGL
