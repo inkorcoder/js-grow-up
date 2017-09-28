@@ -49,9 +49,9 @@ var regularExpression = new RegExp('divisory', 'gim');
 - `.split()` - разбивает строку на элементы массива и возвращает уже массив
 
 #### Полезные ссылки
-- [Регулярные выражения от dev.mozilla](https://developer.mozilla.org/ru/docs/Web/JavaScript/Guide/Regular_Expressions)
-- [regexr.com](https://regexr.com/)
-- [Регулярные выражения от Sorax](https://www.youtube.com/watch?v=9hLkbhRs7jM)
+[Регулярные выражения от dev.mozilla](https://developer.mozilla.org/ru/docs/Web/JavaScript/Guide/Regular_Expressions) <br>
+[regexr.com](https://regexr.com/) <br>
+[Регулярные выражения от Sorax](https://www.youtube.com/watch?v=9hLkbhRs7jM)
 
 ## Домашнее задание
 
