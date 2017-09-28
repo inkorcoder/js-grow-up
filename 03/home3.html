@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Homework 02</title>
+	<link rel="stylesheet" href="css/bundle.css">
+</head>
+<body id="home">
+
+	<h3>mousedown, mouseup, click</h3>
+	<button class="btn" id="mousedown">button<span>(mousedown)</span></button>
+	<button class="btn" id="mouseup">button<span>(mouseup)</span></button>
+	<button class="btn" id="click">button<span>(click)</span></button>
+
+	<h3>focus, blur</h3>
+	<input type="text" id="focusBlur">
+
+	<h3>change</h3>
+	<select id="change">
+		<option value="opt1">option 1</option>
+		<option value="opt2">option 2</option>
+		<option value="opt3">option 3</option>
+	</select>
+
+	<script>
+
+		var events = [
+					'mousedown', 'mouseup', 'click',
+					'focus', 'blur', 'change',
+					'keydown', 'keypress', 'keyup'
+				],
+				documentEvents = [
+					{ ev: 'onEscape', key: 27 },
+					{ ev: 'onEnter', 	key: 13 },
+					{ ev: 'onLeft', 	key: 37 },
+					{ ev: 'onRight', 	key: 39 },
+					{ ev: 'onUp', 		key: 38 },
+					{ ev: 'onDown', 	key: 40 },
+					{ ev: 'onSpace', 	key: 32 },
+					{ ev: 'onShft', 	key: 16 },
+					{ ev: 'onCtrl', 	key: 17 }
+				];
+
+		function $(node, context) {
+			// выборка будет представлять из себя массив выбраных нод
+			var collection = [];
+
+			// если ничего не прошло, то вохвращаем пустой массив
+			if (!node){
+				return collection;
+			}
+			// если селектор приходит строкой
+			if (typeof node === 'string'){
+				// если приходит контекст, ищем елемент в нем
+				if (context){
+					collection = [].slice.call($(context)[0].querySelectorAll(node));
+				// если нет - то ищем по документу
+				} else {
+					collection = [].slice.call(document.querySelectorAll(node));
+				}
+			// если в селектор попадает единичный элемент
+			// nodeType может быть одним из:
+			// 1 элемент
+			// 3 текст
+			// 8 комментарий
+			// 9 document
+			// и их еще много на самом деле
+			} else if (node.nodeType && (node.nodeType === 1 || node.nodeType === 9)){
+				collection = [node];
+			// если в селектор попадает NodeList
+			} else if (typeof node === 'object'){
+				collection = [].slice.call(node);
+			}
+			// пробегаемся по массиву с событиями
+			events.map(function(eventName){
+				// записываем метод на массив по имени события (напрмиер collection['click'])
+				collection[eventName] = function(callback) {
+					// для каждой ноды в выборке
+					collection.map(function(node, index){
+						// навешиваем обработчик события
+						node.addEventListener(eventName, function(e){
+							// и замыкаем на нем this путем вызова call в ее контексте
+							callback.call(node, e);
+						}, false);
+					});
+				}
+			});
+
+			// то же самое делаем для событий на document
+			if (collection[0] === document){
+				documentEvents.map(function(eventObj){
+					collection[eventObj.ev] = function(callback) {
+						collection.keydown(function(e){
+							if (callback && e.keyCode === eventObj.key){
+								callback.call(node, e);
+							}
+						});
+					}
+				});
+			}
+			// устанавливаем метод trigger
+			collection.trigger = function(eventName){
+				// для каждой ноды в выборке
+				collection.map(function(node){
+					// если на документе есть свойство 'createEvent'
+					// то это новый браузер и на него можно навесить через
+					// 'addEventListener'
+					if (document.createEvent) {
+						event = new Event(eventName);
+						node.dispatchEvent(event);
+					// если нет - то от старый и используем старый подход
+					} else {
+						event = document.createEventObject();
+						node.fireEvent('on'+eventName, event);
+					}
+				});
+			};
+			// всегда возвращаем выборку
+			return collection;
+		}
+
+		// мышь
+		$('#mousedown').mousedown(function(e){ console.log(e.target, this) });
+		$('#mouseup').mouseup(function(e){ console.log(e.target, this) });
+		$('#click').click(function(e){ console.log(e.target, this) });
+		// инпуты
+		$('#focusBlur').focus(function(e){ console.log('focus') })
+		$('#focusBlur').blur(function(e){ console.log('blur') })
+		$('#change').change(function(e){ console.log('change', e.target.value) })
+		// document
+		$(document).onEscape(function(e){ console.log('onEscape') });
+		$(document).onEnter(function(e){ console.log('onEnter') });
+		$(document).onLeft(function(e){ console.log('onLeft') });
+		$(document).onRight(function(e){ console.log('onRight') });
+		$(document).onUp(function(e){ console.log('onUp') });
+		$(document).onDown(function(e){ console.log('onDown') });
+		$(document).onSpace(function(e){ console.log('onSpace') });
+		$(document).onShft(function(e){ console.log('onShft') });
+		$(document).onCtrl(function(e){ console.log('onCtrl') });
+		// триггер
+		setTimeout(function(){
+			$('#mousedown').trigger('mousedown');
+		}, 2000);
+
+	</script>
+
+</body>
+</html>
