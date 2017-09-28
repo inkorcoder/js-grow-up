@@ -68,8 +68,8 @@ var regularExpression = new RegExp('divisory', 'gim');
 
 Цвета должны быть взяты с палитры `Monokai`
 
-[Monokai](https://studiostyl.es/schemes/monokai)
-[Пример палитры Monokai](https://hexchat.github.io/img/themes/Monokai.png)
+[Monokai](https://studiostyl.es/schemes/monokai) <br>
+[Пример палитры Monokai](https://hexchat.github.io/img/themes/Monokai.png) <br>
 [HTML спецсимволы](https://htmlweb.ru/html/symbols.php)
 
 Код для подсветки:
