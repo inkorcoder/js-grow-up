@@ -5,7 +5,7 @@
 - 03 [Контекст вызова: Call, Apply, Bind. Каррирование](https://github.com/inkorcoder/js-grow-up/tree/master/03)
 - 04 [Битовые операции, регуярные выражения](https://github.com/inkorcoder/js-grow-up/tree/master/04)
 - 05 [AJAX, Сокеты, LocalStorage, Веб-воркеры, Сервис-воркеры, API](https://github.com/inkorcoder/js-grow-up/tree/master/05)
-- 06 ECMAScript 2015 (ES6)
+- 06 [ECMAScript 2015 (ES6)](https://github.com/inkorcoder/js-grow-up/tree/master/06)
 - 07 SVG, Canvas, requestAnimationFrame, WebGL
 - 08 Node.js, Gulp.js, Webpack
 - 09 Шаблоны проектирования: MVC, MVP, MVVM. Оптимизация, best practices
