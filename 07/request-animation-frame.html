@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+	<meta charset="UTF-8">
+	<title>Canvas (requestAnimationFrame)</title>
+
+	<style>
+		canvas {
+			background: #f0f0f0;
+			margin: 20px auto;
+			display: block;
+		}
+	</style>
+
+</head>
+<body>
+
+	<img src="snickers.jpg" id="image" style="display:none">
+	<canvas id="canvas"></canvas>
+
+	<script>
+
+		// укажем высоту и ширину канваса
+		let width = 400, height = 300;
+
+		// requestAnimationFrame - это глобальная функция, которая
+		// вызывается с частотой 60 раз в секунду
+		// если ресурсы заняты и система не может отрисовывать с такой
+		// скоростью, то рейт падает до допустимо возможного
+		let requestAnimationFrame = window.requestAnimationFrame;
+
+		// получаем элемент для работы с ним и указывем его высоту и ширину
+		canvas = document.getElementById('canvas');
+		canvas.width = width;
+		canvas.height = height;
+
+		// для работы с канвасом нам нужно получить его контекст
+		// мы не работаем напрямую с канвасом как с нодой
+		// мы работаем с его API
+		// то есть контекст - это что-то вроде экземпляра класса
+		// оперируя его состоянием мы заставляем его рендерить то
+		// что нам нужно
+		let ctx = canvas.getContext("2d");
+
+		let i = 0;
+		(function update() {
+			// clearRect() - очищает участок канваса, в данном случае весь
+			ctx.clearRect(0,0,width,height)
+
+			ctx.beginPath()
+			ctx.arc(
+				width/2+(100*Math.sin(i/100)),
+				height/2+(100*Math.cos(i/100)),
+				20,
+				0,
+				2*Math.PI
+			);
+			ctx.fill()
+
+			i++;
+			// каждый раз в функции update нам надо вызывать функцию
+			// requestAnimationFrame и передать в нее саму update
+			// тоесть requestAnimationFrame будет пытаться запустить
+			// функцию update так быстро, как сможет система
+			requestAnimationFrame(update)
+		})()
+
+
+	</script>
+
+</body>
+</html>
