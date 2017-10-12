@@ -7,5 +7,5 @@
 - 05 [AJAX, Сокеты, LocalStorage, Веб-воркеры, Сервис-воркеры, API](https://github.com/inkorcoder/js-grow-up/tree/master/05)
 - 06 [ECMAScript 2015 (ES6)](https://github.com/inkorcoder/js-grow-up/tree/master/06)
 - 07 [SVG, Canvas, requestAnimationFrame, WebGL](https://github.com/inkorcoder/js-grow-up/tree/master/07)
-- 08 Node.js, Gulp.js, Webpack
+- 08 [Node.js, Gulp.js, Webpack](https://github.com/inkorcoder/js-grow-up/tree/master/08)
 - 09 Шаблоны проектирования: MVC, MVP, MVVM. Оптимизация, best practices
